@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A responsive vanilla JavaScript to-do list application">
+    <title>TaskFlow - To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <!-- ================= HEADER ================= -->
+        <header class="app-header">
+            <div>
+                <p class="eyebrow">Productivity</p>
+                <h1>TaskFlow</h1>
+                <p class="subtitle">Organize your tasks and get things done.</p>
+            </div>
+            <button id="themeToggle" class="icon-button" type="button" title="Toggle dark mode">🌙</button>
+        </header>
+
+        <main>
+            <!-- ================= TASK FORM ================= -->
+            <section class="task-form-section">
+                <h2>Add a task</h2>
+                <form id="taskForm" class="task-form">
+                    <div class="input-group task-input-group">
+                        <label for="taskInput">Task</label>
+                        <input
+                            id="taskInput"
+                            name="task"
+                            type="text"
+                            placeholder="What needs to be done?"
+                            maxlength="200"
+                            autocomplete="off"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="priorityInput">Priority</label>
+                        <select id="priorityInput" name="priority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <button class="primary-button" type="submit">
+                        <span>＋</span>
+                        Add Task
+                    </button>
+                </form>
+                <p id="formMessage" class="form-message"></p>
+            </section>
+
+            <!-- ================= CONTROLS ================= -->
+            <section class="controls-section">
+                <div class="filter-group">
+                    <button class="filter-button active" data-filter="all" type="button">All</button>
+                    <button class="filter-button" data-filter="active" type="button">Active</button>
+                    <button class="filter-button" data-filter="completed" type="button">Completed</button>
+                </div>
+                <div class="sort-group">
+                    <label for="sortSelect">Sort</label>
+                    <select id="sortSelect">
+                        <option value="manual">Manual order</option>
+                        <option value="priority">Priority</option>
+                        <option value="date">Date added</option>
+                    </select>
+                </div>
+                <button id="clearCompleted" class="secondary-button" type="button">Clear completed</button>
+            </section>
+
+            <!-- ================= TASK LIST ================= -->
+            <section class="tasks-section">
+                <div class="section-heading">
+                    <h2>Your tasks</h2>
+                    <span id="taskCountLabel" class="task-count-label">0 tasks</span>
+                </div>
+
+                <ul id="taskList" class="task-list"></ul>
+
+                <div id="emptyState" class="empty-state" hidden>
+                    <div class="empty-icon">✓</div>
+                    <h3>No tasks here</h3>
+                    <p>Add a task above to get started.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="app-footer">
+            <div class="stat">
+                <strong id="totalCount">0</strong>
+                <span>Total</span>
+            </div>
+            <div class="stat">
+                <strong id="completedCount">0</strong>
+                <span>Completed</span>
+            </div>
+            <div class="stat">
+                <strong id="pendingCount">0</strong>
+                <span>Pending</span>
+            </div>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
